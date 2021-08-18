@@ -1,0 +1,33 @@
+table {
+    width: 100%;
+  }
+th {
+  font-weight: normal;
+}
+
+h3 {
+  font-weight: bold;
+}
+
+h1 {
+  font-weight: bolder;
+}
+
+.col-7 {
+  flex: 0 0 auto;
+  width: 20%;
+}
+
+.example-button {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.color {
+  color: rgb(116, 51, 38);
+}
+
+.fondo {
+  background-color: rgb(116, 51, 38);
+  color: white;
+}

@@ -1,0 +1,140 @@
+<h1 class="text-center mt-4">CARRITO</h1>
+
+<mat-stepper linear #stepper>
+  <mat-step [editable]="false">
+    <div class="container mt-4" *ngIf="this.completed == false">
+      <div class="row justify-content-center mt-2">
+        <div class="col-6 text-right">
+          <button mat-flat-button color="warn" (click)="emptyCart()" class="mb-2">Vaciar carrito</button>
+        </div>
+      </div>
+    
+      <div class="row justify-content-center">
+        <div class="col-6 justify-content-center">
+          <table class="table table-hover">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col" class="text-center">Día</th>
+                <th scope="col" class="text-center">Horario</th>
+                <th scope="col" class="text-center">Modalidad</th>
+                <th scope="col" class="text-center">Frecuencia</th>
+                <th scope="col" class="text-center">Precio</th>
+                <th scope="col" class="text-center">Eliminar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of cartItems">
+                <td *ngIf="item.dia != null; else elseBlock" class="text-center">{{item.dia}}</td>
+                <td *ngIf="item.hora_inicio != null; else elseBlock" class="text-center">{{item.hora_inicio | slice:0:2}} a {{item.hora_fin | slice:0:2}}</td>
+                <td class="text-center">{{item.modalidad}}</td>
+                <td>
+                  <mat-form-field appearance="fill">
+                    <select matNativeControl (change)="modifyFrequency($event, item)">
+                      <option *ngFor="let f of freq" [value]="f">{{f}}</option>
+                    </select>
+                  </mat-form-field>
+                </td>
+                <td class="text-center">${{item.precio}}</td>
+                <td class="text-center">
+                  <button mat-mini-fab color="warn" #tooltip="matTooltip"
+                  matTooltip="Eliminar"
+                  matTooltipPosition="right"
+                  matTooltipHideDelay="100" (click)="removeItem(item)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </td>
+                <ng-template #elseBlock>
+                  <td class="text-center"> - </td>
+                </ng-template>
+              </tr>
+    
+              <tr>
+                <th colspan="1">Total</th>
+                <th colspan="4" class="text-right">${{this.precioTotal}}</th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    
+      <div class="row justify-content-center mt-2">
+        <div class="col-6">
+          <button mat-flat-button matStepperNext (click)="checkout()" class="example-button boton fondo" [disabled]="disabled">Siguiente</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-4" *ngIf="this.completed == true">
+      <div class="row justify-content-center mt-2">
+        <div class="col-6">
+          <h4>¡Creaste tu orden correctamente, avanzá al siguiente paso para pagar!</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-4" *ngIf="this.triggerError == true">
+      <div class="row justify-content-center mt-2">
+        <div class="col-6">
+          <h4>Ocurrió un error al crear tu carrito, volvé a intentarlo</h4>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-2">
+        <div class="col-6">
+          <button mat-flat-button (click)="creationError()" class="example-button boton fondo">Volver a las clases</button>
+        </div>
+      </div>
+    </div>
+  </mat-step>
+  <mat-step [editable]="false" *ngIf="this.completed == true"> 
+    <div class="container mt-4 justify-content-center" *ngIf="this.completedA == false">
+      <div class="row justify-content-center">
+        <div class="col-7 justify-content-center">
+          <div class="card" style="width: 22rem;">
+            <img class="card-img-top align-self-center" src="https://estore.tmsa.com.ar/wp-content/uploads/2020/12/MercadoPago_Logo.png" alt="Card image cap" style="width: 70%;">
+            <div class="card-body">
+              <h2 class="card-title text-center">Terminá tu compra</h2>
+              <table class="table table-sm">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col" class="text-center">Día</th>
+                    <th scope="col" class="text-center">Horario</th>
+                    <th scope="col" class="text-center">Modalidad</th>
+                    <th scope="col" class="text-center">Frecuencia</th>
+                    <th scope="col" class="text-center">Precio</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of cartItems">
+                    <td *ngIf="item.dia != null; else elseBlock" class="text-center">{{item.dia}}</td>
+                    <td *ngIf="item.hora_inicio != null; else elseBlock" class="text-center">{{item.hora_inicio | slice:0:2}} a {{item.hora_fin | slice:0:2}}</td>
+                    <td class="text-center">{{item.modalidad}}</td>
+                    <td class="text-center">{{item.frecuencia}}</td>
+                    <td class="text-center">${{item.precio}}</td>
+                    <ng-template #elseBlock>
+                      <td class="text-center"> - </td>
+                    </ng-template>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="total text-center">TOTAL = ${{this.precioTotal}}</p>
+              <button mat-flat-button matStepperNext (click)="payment()" class="example-button boton fondo" [disabled]="disabledA">Pagar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-4" *ngIf="this.completedA == true">
+      <div class="row justify-content-center">
+        <h4>¡Realizaste exitosamente tu inscripción!</h4>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-6">
+          <button mat-flat-button routerLink='../user-inscripciones' class="example-button boton fondo">Mirá las clases que tenés disponibles</button>
+        </div>
+      </div>
+    </div>
+  </mat-step>
+</mat-stepper>
+
+

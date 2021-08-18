@@ -1,0 +1,105 @@
+<h1 class="text-center mt-4 color">INSCRIPCIONES</h1>
+
+<div class="container">
+    <div class="row justify-content-center mt-4">
+        <div class="col-7" *ngIf = "this.dias.lunes[0] != null">
+            <div class="card">
+                <div class="card-body p-2">
+                    <h3 class="card-title text-center color">Lunes</h3>
+                    <table class="table table-sm">
+                        <tbody>
+                            <tr *ngFor="let l of this.lunes" class="justify-content-center" #tooltip="matTooltip"
+                            matTooltip="{{l.frecuencia}}"
+                            matTooltipPosition="below"
+                            matTooltipHideDelay="100">
+                                <td class="card-body text-center pt-3 color">{{l.hora_inicio | slice:0:2}} a {{l.hora_fin | slice:0:2}}</td>
+                                <td class="card-body text-center pt-3 color"> - </td>
+                                <td class="card-body text-center pt-3 color">{{l.modalidad}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-7" *ngIf = "this.dias.martes[0] != null">
+            <div class="card">
+                <div class="card-body p-2">
+                    <h3 class="card-title text-center color">Martes</h3>
+                    <table class="table table-sm">
+                        <tbody>
+                            <tr *ngFor="let m of this.martes" class="justify-content-center" #tooltip="matTooltip"
+                            matTooltip="{{m.frecuencia}}"
+                            matTooltipPosition="below"
+                            matTooltipHideDelay="100">
+                                <td class="card-body text-center pt-3 color">{{m.hora_inicio | slice:0:2}} a {{m.hora_fin | slice:0:2}}</td>
+                                <td class="card-body text-center pt-3 color"> - </td>
+                                <td class="card-body text-center pt-3 color">{{m.modalidad}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-7" *ngIf = "this.dias.miercoles[0] != null">
+            <div class="card">
+                <div class="card-body p-2">
+                    <h3 class="card-title text-center color">Miércoles</h3>
+                    <table class="table table-sm">
+                        <tbody>
+                            <tr *ngFor="let mi of this.miercoles" class="justify-content-center" #tooltip="matTooltip"
+                            matTooltip="{{mi.frecuencia}}"
+                            matTooltipPosition="below"
+                            matTooltipHideDelay="100">
+                                <td class="card-body text-center pt-3 color">{{mi.hora_inicio | slice:0:2}} a {{mi.hora_fin | slice:0:2}}</td>
+                                <td class="card-body text-center pt-3 color"> - </td>
+                                <td class="card-body text-center pt-3 color">{{mi.modalidad}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-7" *ngIf = "this.dias.jueves[0] != null">
+            <div class="card">
+                <div class="card-body p-2">
+                    <h3 class="card-title text-center color">Jueves</h3>
+                    <table class="table table-sm">
+                        <tbody>
+                            <tr *ngFor="let j of this.jueves" class="justify-content-center" #tooltip="matTooltip"
+                            matTooltip="{{j.frecuencia}}"
+                            matTooltipPosition="below"
+                            matTooltipHideDelay="100">
+                                <td class="card-body text-center pt-3 color">{{j.hora_inicio | slice:0:2}} a {{j.hora_fin | slice:0:2}}</td>
+                                <td class="card-body text-center pt-3 color"> - </td>
+                                <td class="card-body text-center pt-3 color">{{j.modalidad}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-7" *ngIf = "this.dias.viernes[0] != null">
+            <div class="card">
+                <div class="card-body p-2">
+                    <h3 class="card-title text-center color">Viernes</h3>
+                    <table class="table table-sm">
+                        <tbody>
+                            <tr *ngFor="let v of this.viernes" class="justify-content-center" #tooltip="matTooltip"
+                            matTooltip="{{v.frecuencia}}"
+                            matTooltipPosition="below"
+                            matTooltipHideDelay="100">
+                                <td class="card-body text-center pt-3 color">{{v.hora_inicio | slice:0:2}} a {{v.hora_fin | slice:0:2}}</td>
+                                <td class="card-body text-center pt-3 color"> - </td>
+                                <td class="card-body text-center pt-3 color">{{v.modalidad}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

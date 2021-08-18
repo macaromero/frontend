@@ -1,0 +1,26 @@
+table {
+    width: 100%;
+  }
+th {
+  font-weight: normal;
+}
+
+h3 {
+  font-weight: bold;
+}
+
+h1 {
+  font-weight: bolder;
+}
+
+.color {
+  color: rgb(116, 51, 38);
+}
+
+.fondo {
+  background-color: rgb(116, 51, 38);
+}
+
+.blancos {
+  color: white;
+}

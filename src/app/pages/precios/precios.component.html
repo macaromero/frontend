@@ -1,0 +1,49 @@
+<h1 class="text-center mt-4 color">PRECIOS</h1>
+
+<div class="container mt-4 justify-content-center">
+    <div class="row ml-4 justify-content-center">
+        <div class="col-4 justify-content-center">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h3 class="card-title text-center color">Presenciales</h3>
+                    <table class="table table-hover table-bordered">
+                        <thead class="thead fondo">
+                        <tr>
+                            <th scope="col" class="text-center blancos">Frecuencia</th>
+                            <th scope="col" class="text-center blancos">Precio</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let p of precios_presencial">
+                            <td scope="row" class="text-center color">{{p.frecuencia}}</td>
+                            <td class="text-center color">${{p.precio}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+              </div>
+        </div>
+        <div class="col-4">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h3 class="card-title text-center color">Virtuales</h3>
+                    <table class="table table-hover table-bordered">
+                        <thead class="thead fondo">
+                        <tr>
+                            <th scope="col" class="text-center blancos">Frecuencia</th>
+                            <th scope="col" class="text-center blancos">Precio</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let p of precios_virtual">
+                            <td scope="row" class="text-center color">{{p.frecuencia}}</td>
+                            <td class="text-center color">${{p.precio}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+

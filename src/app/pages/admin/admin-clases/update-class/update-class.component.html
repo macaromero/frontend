@@ -1,0 +1,68 @@
+<div class="container" *ngIf="trigger === false; else elseBlock">
+  <h1 class="text-center mt-4 color">EDITAR CLASE {{clase.id_clase}}</h1>
+    <div class="row justify-content-center">
+            <table class="table table-hover">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">ID Horario</th>
+                    <th scope="col">Día</th>
+                    <th scope="col">Horario</th>
+                    <th scope="col">Modalidad</th>
+                    <th scope="col">Link</th>
+                    <th scope="col">Eliminar</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <mat-form-field appearance="fill">
+                        <select matNativeControl (change)="modifyDate($event)">
+                          <option *ngFor="let h of horarios" [value]="h.id_horario">
+                            {{h.id_horario}}
+                          </option>
+                        </select>
+                      </mat-form-field>
+                    <td>{{clase.dia}}</td>
+                    <td>{{clase.hora_inicio | slice:0:2}} a {{clase.hora_fin | slice:0:2}}</td>
+                    <mat-form-field appearance="fill">
+                      <select matNativeControl (change)="modifyType($event)">
+                        <option *ngFor="let m of modalidades" [value]="m.modalidad">
+                          {{m.modalidad}}
+                        </option>
+                      </select>
+                    </mat-form-field>
+                    <td>
+                      <form class="example-form" [formGroup]="this.linkForm">
+                        <mat-form-field>
+                          <mat-label>Link</mat-label>
+                          <input type="text" matInput value="clase.link" formControlName="link">
+                        </mat-form-field>
+                      </form>
+                    </td>
+                    <td>
+                        <button mat-mini-fab color="warn" #tooltip="matTooltip"
+                        matTooltip="Eliminar"
+                        matTooltipPosition="right"
+                        matTooltipHideDelay="100" (click)="deleteClass(clase)">
+                          <mat-icon>delete</mat-icon>
+                        </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-6 mt-2">
+          <button mat-raised-button color="primary" class="example-full-width fondo" (click)="update()">Enviar</button>
+      </div>
+    </div>
+</div>
+
+<ng-template #elseBlock>
+  <h1 class="text-center mt-4">EDITAR CLASE</h1>
+  <div class="row justify-content-center">
+    <div class="col-6 text-center">
+      <h3>¡La clase se editó correctamente!</h3>
+    </div>
+  </div>
+</ng-template>

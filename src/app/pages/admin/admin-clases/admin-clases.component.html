@@ -1,0 +1,53 @@
+<div class="container" *ngIf="single == false; else elseBlock">
+
+    <h1 class="text-center mt-4 color">CLASES DISPONIBLES</h1>
+
+    <div class="row justify-content-end mb-3">
+      <button mat-raised-button class="fondo" (click)="create()">Crear nueva clase</button>
+    </div>
+
+    <div class="row justify-content-center">
+        <table class="table table-hover">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Día</th>
+                <th scope="col">Horario</th>
+                <th scope="col">Modalidad</th>
+                <th scope="col">Link</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Eliminar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let c of clases">
+                <th scope="row">{{c.id_clase}}</th>
+                <td>{{c.dia}}</td>
+                <td>{{c.hora_inicio | slice:0:2}} a {{c.hora_fin | slice:0:2}}</td>
+                <td>{{c.modalidad}}</td>
+                <td>{{c.link}}</td>
+                <td>
+                    <button mat-mini-fab class="fondo" #tooltip="matTooltip"
+                    matTooltip="Editar"
+                    matTooltipPosition="right"
+                    matTooltipHideDelay="100" (click)="editClass(c)">
+                      <mat-icon>edit</mat-icon>
+                    </button>
+                </td>
+                <td>
+                    <button mat-mini-fab color="warn" #tooltip="matTooltip"
+                    matTooltip="Eliminar"
+                    matTooltipPosition="right"
+                    matTooltipHideDelay="100" (click)="deleteClass(c)">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
+
+<ng-template #elseBlock>
+    <app-update-class [clase] = "this.clase"></app-update-class>
+</ng-template>

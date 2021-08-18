@@ -1,0 +1,33 @@
+<div class="container">
+
+    <h1 class="text-center mt-4 color">CLASES CON USUARIOS INSCRIPTOS</h1>
+
+    <div class="row justify-content-center mt-3">
+            <table class="table table-hover">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Día</th>
+                    <th scope="col">Horario</th>
+                    <th scope="col">Modalidad</th>
+                    <th scope="col">Usuarios inscriptos</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let c of clases">
+                    <th scope="row">{{c.id_clase}}</th>
+                    <td>{{c.dia}}</td>
+                    <td>{{c.hora_inicio | slice:0:2}} a {{c.hora_fin | slice:0:2}}</td>
+                    <td>{{c.modalidad}}</td>
+                    <td style="width: 15%;">
+                        <div *ngFor="let u of usuarios">
+                            <div *ngIf="c.id_clase == u.id_clase">
+                                {{u.nombre}} {{u.apellido}}
+                            </div>
+                        </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+    </div>
+</div>

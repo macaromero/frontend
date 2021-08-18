@@ -1,0 +1,13 @@
+h1 {
+    font-weight: bolder;
+  }
+
+.color {
+  color: rgb(116, 51, 38);
+}
+
+.fondo {
+  background-color: rgb(116, 51, 38);
+  color: white;
+}
+  

@@ -1,0 +1,78 @@
+<div *ngIf="adminAuthService.isAdminAuthenticated() === false; else adminBlock">
+  <mat-toolbar *ngIf="authService.isAuthenticated() === false; else elseBlock" class="color mb-3">
+    <button mat-button [matMenuTriggerFor]="menu"><mat-icon class="blancos">menu</mat-icon></button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink='/home'>Home</button>
+        <button mat-menu-item routerLink='/horarios'>Horarios</button>
+        <button mat-menu-item routerLink='/precios'>Precios</button>
+        <button mat-menu-item >Contacto</button>
+    </mat-menu>
+    <!-- <button routerLink='/home' mat-flat-button class="color">
+      <span class="blancos">Lucía Romero</span>
+    </button> -->
+    <span class="example-spacer"></span>
+
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button" [matMenuTriggerFor]="login">
+      <mat-icon class="blancos">person</mat-icon>
+    </button>
+    <mat-menu #login="matMenu">
+        <button mat-menu-item routerLink='/login'>Iniciá sesión</button>
+        <button mat-menu-item routerLink='/registro' >Registrate</button>
+    </mat-menu>
+  </mat-toolbar>
+  
+
+  <ng-template #elseBlock>
+    <mat-toolbar class="color">
+      <button mat-button [matMenuTriggerFor]="menu"><mat-icon class="blancos">menu</mat-icon></button>
+      <mat-menu #menu="matMenu">
+          <button mat-menu-item routerLink='/user-home'>Home</button>
+          <button mat-menu-item routerLink='/horarios'>Inscribite</button>
+          <button mat-menu-item routerLink='/user-inscripciones'>Mis clases</button>
+          <button mat-menu-item routerLink='/precios'>Precios</button>
+      </mat-menu>
+      <!-- <button routerLink='/home' mat-flat-button class="color">
+        <span class="blancos">Lucía Romero</span>
+      </button> -->
+      <span class="example-spacer"></span>
+
+      
+      <button mat-flat-button class="example-icon color" aria-label="Example icon-button" (click)="cart()">
+        <mat-icon [matBadge] ="this.number" matBadgeColor="warn" class="blancos">shopping_cart</mat-icon>
+      </button>
+      <button mat-flat-button class="example-icon color" aria-label="Example icon-button" [matMenuTriggerFor]="logged">
+        <span class="userName blancos">{{this.nombre}}</span>
+        <mat-icon class="blancos">more_vert</mat-icon>
+      </button>
+      <mat-menu #logged="matMenu">
+        <button mat-menu-item (click)="userProfile()">Perfil</button>
+        <button mat-menu-item (click)="userUpdate()">Modificar perfil</button>
+        <button mat-menu-item (click)="logOut()">Log out</button>
+      </mat-menu>
+    </mat-toolbar>
+  </ng-template>
+</div>
+
+<ng-template #adminBlock>
+  <mat-toolbar class="color">
+    <button mat-button [matMenuTriggerFor]="menu"><mat-icon class="blancos">menu</mat-icon></button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink='/admin-home'>Home</button>
+        <button mat-menu-item routerLink='/admin-clases'>Clases</button>
+        <button mat-menu-item routerLink='/admin-inscripciones'>Inscriptos</button>
+        <button mat-menu-item routerLink='/admin-precios'>Precios</button>
+    </mat-menu>
+    <!-- <button routerLink='/admin-home' mat-flat-button class="color">
+      <span class="blancos">Lucía Romero</span>
+    </button> -->
+    <span class="example-spacer"></span>
+
+    <button mat-flat-button class="example-icon color" aria-label="Example icon-button" [matMenuTriggerFor]="loggedAdmin">
+      <span class="userName blancos">Admin {{this.nombre}}</span>
+    </button>
+    <mat-menu #loggedAdmin="matMenu">
+      <button mat-menu-item (click)="adminProfile()">Perfil</button>
+      <button mat-menu-item (click)="adminLogOut()">Log out</button>
+    </mat-menu>
+  </mat-toolbar>
+    

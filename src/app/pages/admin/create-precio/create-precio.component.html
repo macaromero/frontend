@@ -1,0 +1,67 @@
+<div class="container" *ngIf="trigger === false; else elseBlock">
+    <h1 class="text-center mt-4 color">CREÁ UN NUEVO PRECIO</h1>
+
+    <div class="row justify-content-center">
+        <table class="table table-hover">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">Modalidad</th>
+                <th scope="col">Frecuencia</th>
+                <th scope="col">Precio</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <mat-form-field appearance="fill">
+                            <select matNativeControl (change)="selectType($event)">
+                            <option *ngFor="let m of modalidades" [value]="m.id_modalidad">
+                                {{m.modalidad}}
+                            </option>
+                            </select>
+                        </mat-form-field>
+                    </td>                  
+                    
+                    <td>
+                        <mat-form-field appearance="fill">
+                            <select matNativeControl (change)="selectFreq($event)">
+                            <option *ngFor="let f of frecuencias" [value]="f">
+                                {{f}}
+                            </option>
+                            </select>
+                        </mat-form-field>
+                    </td>
+
+                    <td>
+                        <form class="example-form" [formGroup]="this.priceForm">
+                            <mat-form-field>
+                            <mat-label>Precio</mat-label>
+                            <input type="number" matInput formControlName="precio">
+                            </mat-form-field>
+                        </form>
+                    </td>                   
+                </tr>
+            </tbody>
+        </table>
+    </div>
+  
+      <div class="row justify-content-center">
+        <div class="col-6 mt-2">
+            <button mat-raised-button class="example-full-width fondo" (click)="create()">Enviar</button>
+        </div>
+      </div>
+  </div>
+  
+  <ng-template #elseBlock>
+    <h1 class="text-center mt-4 color">CREAR PRECIO</h1>
+    <div class="row justify-content-center">
+      <div class="col-6 text-center">
+        <h3>¡El precio se creó correctamente!</h3>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <button mat-raised-button class="example-full-width fondo" (click)="viewPrices()">Mirá todos los precios que hay disponibles</button>
+        </div>
+    </div>
+  </ng-template>

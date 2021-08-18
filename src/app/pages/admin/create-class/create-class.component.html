@@ -1,0 +1,126 @@
+<div class="container" *ngIf="trigger === false; else elseBlock">
+    <h1 class="text-center mt-4 color">CREÁ UNA NUEVA CLASE</h1>
+    <div class="row mt-2 mb-2 justify-content-center">
+        <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false"  class="mb-3">
+                <mat-expansion-panel-header>
+                    <mat-panel-title class="color">
+                        Si querés un rango horario que no está disponible, crealo primero acá
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+    
+                <div class="row justify-content-center">
+                    <div class="col-6 justify-content-center">
+                        <form class="example-form text-center" [formGroup]="this.timeForm">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Hora de inicio</mat-label>
+                                <input matInput type="time" formControlName="hora_inicio">
+                            </mat-form-field>
+            
+                            <mat-form-field appearance="fill">
+                                <mat-label>Hora de finalización</mat-label>
+                                <input matInput type="time" formControlName="hora_fin">
+                            </mat-form-field>
+                        </form>
+                    </div>
+                </div>
+    
+                <div class="row justify-content-center">
+                    <div class="col-6 mt-2">
+                        <button mat-raised-button class="example-full-width fondo" (click)="createTime()">Enviar</button>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center mt-5" *ngIf="createdTime == true">
+                    <h3>¡El rango horario se creó correctamente, abajo podés crear la clase!</h3>
+                </div>
+
+                <div class="row justify-content-center mt-5" *ngIf="errorTime == true">
+                    <h3>Hubo un error, volvé a intentar</h3>
+                </div>
+
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+
+    <div class="row justify-content-center">
+        <table class="table table-hover">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">ID hora</th>
+                <th scope="col">Horario</th>
+                <th scope="col">Día</th>
+                <th scope="col">Modalidad</th>
+                <th scope="col">Link</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <mat-form-field appearance="fill">
+                        <select matNativeControl (change)="selectTime($event)">
+                        <option *ngFor="let h of horas" [value]="h.id_hora">
+                            {{h.id_hora}}
+                        </option>
+                        </select>
+                    </mat-form-field>
+                </td>
+                
+                <td>
+                    {{clase.hora_inicio | slice:0:2}} a {{clase.hora_fin | slice:0:2}}
+                </td>
+
+                <td>
+                    <mat-form-field appearance="fill">
+                        <select matNativeControl (change)="selectDay($event)">
+                        <option *ngFor="let d of dias" [value]="d">
+                            {{d}}
+                        </option>
+                        </select>
+                    </mat-form-field>
+                </td>
+
+                <td>
+                    <mat-form-field appearance="fill">
+                        <select matNativeControl (change)="selectType($event)">
+                            <option *ngFor="let m of modalidades" [value]="m.id_modalidad">
+                            {{m.modalidad}}
+                            </option>
+                        </select>
+                        </mat-form-field>
+                </td>
+                
+                <td>
+                <form class="example-form" [formGroup]="this.linkForm">
+                    <mat-form-field>
+                    <mat-label>Link</mat-label>
+                    <input type="text" matInput formControlName="link">
+                    </mat-form-field>
+                </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+  
+      <div class="row justify-content-center">
+        <div class="col-6 mt-2">
+            <button mat-raised-button class="example-full-width fondo" (click)="create()">Enviar</button>
+        </div>
+      </div>
+  </div>
+  
+  <ng-template #elseBlock>
+    <h1 class="text-center mt-4 color">CREAR CLASE</h1>
+    <div class="row justify-content-center">
+      <div class="col-6 text-center">
+        <h3>¡La clase se creó correctamente!</h3>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <button mat-raised-button class="example-full-width fondo" (click)="viewClasses()">Mirá todas las clases que hay disponibles</button>
+        </div>
+    </div>
+  </ng-template>

@@ -1,0 +1,135 @@
+<h1 class="text-center mt-4">CLASES DISPONIBLES</h1>
+
+<div class="container">
+    <div class="row justify-content-center mt-4">
+        <div class="col-7" *ngIf="lunes != false">
+            <div class="card">
+                <div class="card-body p-2">
+                    <h3 class="card-title text-center">Lunes</h3>
+                    <table class="table table-sm">
+                        <tbody>
+                            <tr *ngFor="let l of this.lunes" class="justify-content-center">
+                                <div class="row justify-content-center">
+                                    <button mat-button  (click)="inscribir(l)" #tooltip="matTooltip"
+                                    matTooltip="Inscribirse"
+                                    matTooltipPosition="below"
+                                    matTooltipHideDelay="100"
+                                    aria-label="Button that displays a tooltip that hides when scrolled out of the container"
+                                    class="example-button" id= {{l.id_clase}}>
+                                        <mat-icon class="icono">add_circle</mat-icon>
+                                        <td class="card-body text-center pt-3 color">{{l.hora_inicio | slice:0:2}} a {{l.hora_fin | slice:0:2}}</td>
+                                        <td class="card-body text-center pt-3 color">{{l.modalidad}}</td>
+                                    </button>
+                                </div>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-7"  *ngIf="martes != false">
+            <div class="card">
+                <div class="card-body p-2">
+                    <h3 class="card-title text-center">Martes</h3>
+                    <table class="table table-sm">
+                        <tbody>
+                            <tr *ngFor="let m of this.martes" class="justify-content-center">
+                                <div class="row justify-content-center">
+                                    <button mat-button  (click)="inscribir(m)" #tooltip="matTooltip"
+                                    matTooltip="Inscribirse"
+                                    matTooltipPosition="below"
+                                    matTooltipHideDelay="100"
+                                    aria-label="Button that displays a tooltip that hides when scrolled out of the container"
+                                    class="example-button">
+                                        <mat-icon class="icono">add_circle</mat-icon>
+                                        <td class="card-body text-center pt-3 color">{{m.hora_inicio | slice:0:2}} a {{m.hora_fin | slice:0:2}}</td>
+                                        <td class="card-body text-center pt-3 color">{{m.modalidad}}</td>
+                                    </button>
+                                </div>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-7" *ngIf="miercoles != false">
+            <div class="card">
+                <div class="card-body p-2">
+                    <h3 class="card-title text-center">Miércoles</h3>
+                    <table class="table table-sm">
+                        <tbody>
+                            <tr *ngFor="let mi of this.miercoles" class="justify-content-center">
+                                <div class="row justify-content-center">
+                                    <button mat-button  (click)="inscribir(mi)" #tooltip="matTooltip"
+                                    matTooltip="Inscribirse"
+                                    matTooltipPosition="below"
+                                    matTooltipHideDelay="100"
+                                    aria-label="Button that displays a tooltip that hides when scrolled out of the container"
+                                    class="example-button">
+                                        <mat-icon class="icono">add_circle</mat-icon>
+                                        <td class="card-body text-center pt-3 color">{{mi.hora_inicio | slice:0:2}} a {{mi.hora_fin | slice:0:2}}</td>
+                                        <td class="card-body text-center pt-3 color">{{mi.modalidad}}</td>
+                                    </button>
+                                </div>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-7"  *ngIf="jueves != false">
+            <div class="card">
+                <div class="card-body p-2">
+                    <h3 class="card-title text-center">Jueves</h3>
+                    <table class="table table-sm">
+                        <tbody>
+                            <tr *ngFor="let j of this.jueves" class="justify-content-center">
+                                <div class="row justify-content-center">
+                                    <button mat-button  (click)="inscribir(j)" #tooltip="matTooltip"
+                                    matTooltip="Inscribirse"
+                                    matTooltipPosition="below"
+                                    matTooltipHideDelay="100"
+                                    aria-label="Button that displays a tooltip that hides when scrolled out of the container"
+                                    class="example-button">
+                                        <mat-icon class="icono">add_circle</mat-icon>
+                                        <td class="card-body text-center pt-3 color">{{j.hora_inicio | slice:0:2}} a {{j.hora_fin | slice:0:2}}</td>
+                                        <td class="card-body text-center pt-3 color">{{j.modalidad}}</td>
+                                    </button>
+                                </div>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-7"  *ngIf="viernes != false">
+            <div class="card">
+                <div class="card-body p-2">
+                    <h3 class="card-title text-center">Viernes</h3>
+                    <table class="table table-sm">
+                        <tbody>
+                            <tr *ngFor="let v of this.viernes" class="justify-content-center">
+                                <div class="row justify-content-center">
+                                    <button mat-button  (click)="inscribir(v)" #tooltip="matTooltip"
+                                    matTooltip="Inscribirse"
+                                    matTooltipPosition="below"
+                                    matTooltipHideDelay="100"
+                                    aria-label="Button that displays a tooltip that hides when scrolled out of the container"
+                                    class="example-button">
+                                        <mat-icon class="icono">add_circle</mat-icon>
+                                        <td class="card-body text-center pt-3 color">{{v.hora_inicio | slice:0:2}} a {{v.hora_fin | slice:0:2}}</td>
+                                        <td class="card-body text-center pt-3 color">{{v.modalidad}}</td>
+                                    </button>
+                                </div>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

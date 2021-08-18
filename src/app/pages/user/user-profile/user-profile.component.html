@@ -1,0 +1,42 @@
+<h1 class="text-center mt-4 color">PERFIL DE {{user.nombre | uppercase}}</h1>
+
+<div class="container justify-content-center">
+    <div class="row justify-content-center">
+        <div class="col-3 justify-content-center text-left">
+            <div class="mt-1">
+                <p style="font-weight: bold; display: inline;" class="color">Nombre: </p>
+                <p style="display: inline;" class="color">{{user.nombre}}</p>
+            </div>
+            <div class="mt-1">
+                <p style="font-weight: bold; display: inline;" class="color">Apellido: </p>
+                <p style="display: inline;" class="color">{{user.apellido}}</p>
+            </div>
+            <div class="mt-1">
+                <p style="font-weight: bold; display: inline;" class="color">Tipo de documento: </p>
+                <p style="display: inline;" class="color">{{user.tipo_documento}}</p>
+            </div>
+            <div class="mt-1">
+                <p style="font-weight: bold; display: inline;" class="color">Número de documento: </p>
+                <p style="display: inline;" class="color">{{user.num_documento}}</p>
+            </div>
+            <div class="mt-1">
+                <p style="font-weight: bold; display: inline;" class="color">Fecha de nacimiento: </p>
+                <p style="display: inline;" class="color">{{user.fecha_nacimiento | date: 'dd/mm/yyyy'}}</p>
+            </div>
+            <div class="mt-1">
+                <p style="font-weight: bold; display: inline;" class="color">Número de celular: </p>
+                <p style="display: inline;" class="color">{{user.celular}}</p>
+            </div>
+            <div class="mt-1">
+                <p style="font-weight: bold; display: inline;" class="color">Correo electrónico: </p>
+                <p style="display: inline;" class="color">{{user.email}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-4">
+        <div class="col-6">
+            <button mat-raised-button color="primary" class="example-full-width fondo" (click)="editProfile()">Modificá tus datos de perfil</button>
+        </div> 
+    </div>
+</div>

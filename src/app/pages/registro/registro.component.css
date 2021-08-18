@@ -1,0 +1,31 @@
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+h1 {
+  font-weight: bolder;
+}
+
+mat-form-field {
+  margin-right: 12px;
+}
+
+.adjuntar {
+  margin-left: 0.7rem;
+  color: rgb(107, 107, 107);
+}
+
+.color {
+  color: rgb(116, 51, 38);
+}
+
+.fondo {
+  background-color: rgb(116, 51, 38);
+  color: white;
+}

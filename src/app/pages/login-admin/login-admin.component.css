@@ -1,0 +1,22 @@
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  h1 {
+    font-weight: bolder;
+  }
+  
+  mat-form-field {
+    margin-right: 12px;
+  }
+
+  .color {
+    background-color: rgb(116, 51, 38);
+    color: white;
+  }

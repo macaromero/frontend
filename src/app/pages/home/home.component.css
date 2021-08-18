@@ -1,0 +1,17 @@
+.color {
+    color: rgb(116, 51, 38);
+  }
+  
+  .blancos {
+    color: white;
+  }
+
+  h4 {
+    font-weight:400;
+    color: rgb(116, 51, 38);
+  }
+  
+  h1 {
+    font-weight: bolder;
+    color: rgb(116, 51, 38);
+  }

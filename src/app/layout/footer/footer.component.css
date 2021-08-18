@@ -1,0 +1,25 @@
+.fondo {
+    background-color: rgb(116, 51, 38);
+  }
+
+.w-6 {
+    width: 6%;
+    height: 6%;
+}
+
+.blanco {
+    color: white;
+    vertical-align: center;
+}
+  .example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+  }
+
+  .boton {
+      background-color: rgb(116, 51, 38);
+      color: white;
+  }
+
+  
